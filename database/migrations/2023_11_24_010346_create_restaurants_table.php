@@ -17,10 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('name'); //店名
             $table->text('description'); //説明
-            $table->integer('price')->unsigned(); //予算 unsignedって何？
+            $table->integer('price')->unsigned(); //予算「～」がつくが、integerでいいのか？ unsignedを書くことで、マイナスの値が保存できないようにする
             $table->integer('hours');  //営業時間は「～」がつくが、integerでいいのか？
-            $table->string('address');  //住所は、「〒」や数字が入るが、stringでいいのか？
-            $table->timestamps();  //作成日時・更新日時
+            $table->text('address');  //住所は、「〒」や数字が入るが、textでいいのか？
+            $table->string('phone'); //電話番号
+            $table->string('holiday'); //定休日
+            $table->timestamps();  //作成日時・更新日時　　timestampがある　営業時間
         });
     }
 
