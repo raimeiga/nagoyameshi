@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name'); //店名
             $table->text('description'); //説明
             $table->integer('price')->unsigned(); //予算「～」がつくが、integerでいいのか？ unsignedを書くことで、マイナスの値が保存できないようにする
-            $table->integer('hours');  //営業時間は「～」がつくが、integerでいいのか？
+            $table->time('hours');  // 予約時が営業時間内か否かを判断する設定にするなら、inetgerでなく、timeのほうがよいらしい。
             $table->text('address');  //住所は、「〒」や数字が入るが、textでいいのか？
             $table->string('phone'); //電話番号
             $table->string('holiday'); //定休日
