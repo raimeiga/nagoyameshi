@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Restaurant extends Model
 {
     use HasFactory;
+    
+    public function categories() {
+        return $this->belongsToMany(category::class)->withTimestamps();
+    }   
 }
