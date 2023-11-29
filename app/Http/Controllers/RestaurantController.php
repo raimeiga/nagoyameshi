@@ -16,8 +16,8 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::all();
- 
+        // $restaurants = Restaurant::all();
+        $restaurants = Restaurant::with('categories')->get();
          return view('restaurants.index', compact('restaurants'));
     }
 
@@ -43,7 +43,7 @@ class RestaurantController extends Controller
     {
          $restaurant = new Restaurant();
          $restaurant->name = $request->input('name');
-         $restaurant->category_id = $request->input('category_id');
+
          $restaurant->price = $request->input('price');
          $restaurant->hours = $request->input('hours');
          $restaurant->holiday = $request->input('holiday');
@@ -52,6 +52,8 @@ class RestaurantController extends Controller
          $restaurant->phone = $request->input('phone');
          $restaurant->save();
  
+         $restaurant->categories()->sync($request->input('category_ids'));
+
          return to_route('restaurants.index');
     }
 
@@ -89,7 +91,7 @@ class RestaurantController extends Controller
     public function update(Request $request, Restaurant $restaurant)
     {
          $restaurant->name = $request->input('name');
-         $restaurant->category_id = $request->input('category_id');
+         
          $restaurant->price = $request->input('price');
          $restaurant->hours = $request->input('hours');
          $restaurant->holiday = $request->input('holiday');
@@ -97,6 +99,8 @@ class RestaurantController extends Controller
          $restaurant->address = $request->input('address');
          $restaurant->phone = $request->input('phone');
          $restaurant->update();
+
+         $restaurant->categories()->sync($request->input('category_ids')); 
 
         return to_route('restaurants.show');
     }
