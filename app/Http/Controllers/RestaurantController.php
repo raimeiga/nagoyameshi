@@ -39,7 +39,7 @@ class RestaurantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, category $category)
     {
          $restaurant = new Restaurant();
          $restaurant->name = $request->input('name');
@@ -63,8 +63,8 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function show(Restaurant $restaurant)
-    {
+    public function show(Restaurant $restaurant,category $category)
+    {   
         return view('restaurants.show', compact('restaurant'));
     }
 
@@ -102,7 +102,7 @@ class RestaurantController extends Controller
 
          $restaurant->categories()->sync($request->input('category_ids')); 
 
-        return to_route('restaurants.show');
+        return to_route('restaurants.show',compact('restaurant'));
     }
 
     /**
