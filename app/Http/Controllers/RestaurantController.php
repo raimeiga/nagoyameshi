@@ -52,7 +52,7 @@ class RestaurantController extends Controller
          $restaurant->phone = $request->input('phone');
          $restaurant->save();
  
-         $restaurant->categories()->sync($request->input('category_ids'));
+         $restaurant->categories()->sync($request->input('category_id'));
 
          return to_route('restaurants.index');
     }
