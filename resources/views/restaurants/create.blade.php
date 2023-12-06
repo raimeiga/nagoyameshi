@@ -17,7 +17,7 @@
      <div>
         <strong>Category:</strong>
             @foreach ($categories as $category)
-            <input type="checkbox" value="{{ $category->id }}" >{{ $category->name }}
+            <input type="checkbox" name="name" value="{{ $category->id }}" >{{ $category->name }}
             @endforeach          
           
           <!-- 居町講師のコード
