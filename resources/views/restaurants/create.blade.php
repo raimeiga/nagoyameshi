@@ -9,18 +9,24 @@
  <form action="{{ route('restaurants.store') }}" method="POST">
      @csrf
  
-     <div>
+     <div>  
          <strong>Name:</strong>
          <input type="text" name="name" placeholder="Name">
      </div>
 
      <div>
-         <strong>Category:</strong>
-         <select name="category_id">
-         @foreach ($categories as $category)
-         <option value="{{ $category->id }}">{{ $category->name }}</option>
-         @endforeach
-         </select>
+        <strong>Category:</strong>
+            @foreach ($categories as $category)
+            <input type="checkbox" value="{{ $category->id }}" >{{ $category->name }}
+            @endforeach          
+          
+          <!-- 居町講師のコード
+          <strong>Category:</strong>
+            <select multiple name="category_ids[]" >
+            @foreach ($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+         　</select> -->
      </div>
      
      <div>
