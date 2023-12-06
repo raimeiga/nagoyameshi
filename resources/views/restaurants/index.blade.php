@@ -15,8 +15,7 @@
          <td>{{ $restaurant->name }}</td>
          <td>{{ $restaurant->description }}</td>
          <td>{{ $restaurant->price }}</td>
-         <!--　<td>{{ $restaurant->category_id }}</td>  こここれでいいのか？店とカテゴリは中間テーブルで紐づいている -->
-         <td>
+         <td> <!-- ↓ コントローラのindexアクションから渡された$restaurantのidを表示 -->
               @foreach ($restaurant->categories as $category)
                 {{$category->id}}
               @endforeach   

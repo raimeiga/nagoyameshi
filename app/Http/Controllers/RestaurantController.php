@@ -15,9 +15,8 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        // $restaurants = Restaurant::all();
-        $restaurants = Restaurant::with('categories')->get();
+    {    //途中で、$restaurants = Restaurant::with('categories')->get();に書き換えたけど、換えた理由がわからない。一応残しとく。
+         $restaurants = Restaurant::all();
          return view('restaurants.index', compact('restaurants'));
     }
 
@@ -27,10 +26,9 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        $categories = Category::all();
-  
-         return view('restaurants.create', compact('categories'));
+    {   //コードのトップの方でCategoryモデルのuse宣言してるので、Categoriesテーブルから、すべてのデータをインスタンスのコレクションとして取得
+        $categories = Category::all(); 
+         return view('restaurants.create', compact('categories')); //1行前の$categoriesをcreate.blade.phpに渡す
     }
 
     /**
@@ -51,9 +49,12 @@ class RestaurantController extends Controller
          $restaurant->address = $request->input('address');
          $restaurant->phone = $request->input('phone');
          $restaurant->save();
- 
-         $restaurant->categories()->sync($request->input('category_ids'));
-
+            
+         $restaurant->categories()->sync($request->input('category_ids')); 
+            /*↑ 中間テーブルへの保存　sync()メソッド＝引数には紐付けたいリレーション先のIDを指定
+                sync()メソッドの引数に$request->input('category_ids')を渡すことで、その店（restaurant）と
+                チェックされたカテゴリ（category）を紐付けて中間テーブルに保存できる                
+                「category_ids」（複数形）で記述しないと、中間テーブルにも保存されず、indexにも反映されない */
          return to_route('restaurants.index');
     }
 

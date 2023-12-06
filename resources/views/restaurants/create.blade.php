@@ -19,17 +19,19 @@
             <!-- @foreach ($categories as $category)
             <input type="checkbox" name="category" value="{{ $category->id }}" >{{ $category->name }}
             @endforeach           -->
-          
-            @foreach ($categories as $category)
+            
+            
+            <!--↓ $categoriesは、RestaurantControllerのcreateアクションから渡されたCategoryモデルのインスタンス（categoriesテーブルの全カラム） -->
+            @foreach ($categories as $category) 
             <input type="checkbox" name="category_ids[]" value="{{ $category->id }}" >{{ $category->name }}
             @endforeach
-          <!-- 居町講師のコード
-          <strong>Category:</strong>
-            <select multiple name="category_ids[]" >
-            @foreach ($categories as $category)
-            <option value="{{ $category->id }}">{{ $category->name }}</option>
-            @endforeach
-         　</select> -->
+          
+          
+            <!-- 店とカテゴリは「多対多」。チェックボックスに複数チェックが入ると、value属性の値{{ $category->id }}にチェックしたカテゴリのidが格納される。
+                 このように、複数のvalue属性の値を受け取るには、name属性の値に[]（角括弧）をつけて配列にする。
+                 つまりname属性の値をcategory_ids[]にして,value属性の値を$category->id にする。
+                 あとは、コントローラのstoreアクションに$request->input('category_ids')を記述することで、チェックしたカテゴリの
+ 　              IDの配列が取得できる。 -->
      </div>
      
      <div>
