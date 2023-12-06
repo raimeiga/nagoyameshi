@@ -16,10 +16,13 @@
 
      <div>
         <strong>Category:</strong>
-            @foreach ($categories as $category)
-            <input type="checkbox" name="name" value="{{ $category->id }}" >{{ $category->name }}
-            @endforeach          
+            <!-- @foreach ($categories as $category)
+            <input type="checkbox" name="category" value="{{ $category->id }}" >{{ $category->name }}
+            @endforeach           -->
           
+            @foreach ($categories as $category)
+            <input type="checkbox" name="category_ids[]" value="{{ $category->id }}" >{{ $category->name }}
+            @endforeach
           <!-- 居町講師のコード
           <strong>Category:</strong>
             <select multiple name="category_ids[]" >
