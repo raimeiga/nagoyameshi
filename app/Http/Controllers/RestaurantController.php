@@ -52,7 +52,7 @@ class RestaurantController extends Controller
          $restaurant->phone = $request->input('phone');
          $restaurant->save();
  
-         $restaurant->categories()->sync($request->input('category_id'));
+         $restaurant->categories()->sync($request->input('category_ids'));
 
          return to_route('restaurants.index');
     }
@@ -74,7 +74,7 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Restaurant $restaurant)
+    public function edit(Restaurant $restaurant, category $category)
     {
         $categories = Category::all();
   
