@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
-use App\Models\Category;
+use App\Models\Category;  
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -35,7 +35,7 @@ class RestaurantController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     *  
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
