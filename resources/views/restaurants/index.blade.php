@@ -17,12 +17,9 @@
          <td>{{ $restaurant->price }}</td>
          <!--　<td>{{ $restaurant->category_id }}</td>  こここれでいいのか？店とカテゴリは中間テーブルで紐づいている -->
          <td>
-            @foreach ($restaurants as $restaurant)
-              {{$restaurant->id}}
               @foreach ($restaurant->categories as $category)
                 {{$category->id}}
-              @endforeach
-            @endforeach
+              @endforeach            
          </td>
          <td>
              <form action="{{ route('restaurants.destroy',$restaurant->id) }}" method="POST">
