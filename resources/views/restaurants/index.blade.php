@@ -19,7 +19,21 @@
          <td>
               @foreach ($restaurant->categories as $category)
                 {{$category->id}}
-              @endforeach            
+              @endforeach   
+              <!-- @foreach ($restaurant->categories()->get() as $category)
+                {{$category->id}}
+              @endforeach     
+              
+              @foreach ($restaurant->categories as $category)
+                @if($restaurant->categories->contains('id', $category->id))
+                  <input type="checkbox" name="category[]" value="{{ $category->id}}" checked>
+                @else
+                       <input type="checkbox" name="category[]" value="{{ $category->id}}">
+                @endif 
+                    <label for="">
+                    {{ $category->name }}
+                    </label>
+              @endforeach-->
          </td>
          <td>
              <form action="{{ route('restaurants.destroy',$restaurant->id) }}" method="POST">
