@@ -7,7 +7,7 @@
          <th>Name</th>
          <th>Description</th>
          <th>Price</th>
-         <th>Category ID</th>
+         <th>Category Name</th>
          <th>Action</th>
      </tr>
      @foreach ($restaurants as $restaurant)
