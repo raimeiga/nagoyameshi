@@ -24,12 +24,12 @@
 
      <div>
          <strong>Price:</strong>
-         <input type="number" name="price"  value="{{ $restaurant->price }}">
+         <input type="text" name="price"  value="{{ $restaurant->price }}">
      </div>
                   
      <div>
          <strong>Hours:</strong>
-         <input type="number" name="hours"  value="{{ $restaurant->hours }}">
+         <input type="text" name="hours"  value="{{ $restaurant->hours }}">
      </div>
      
      <div>
@@ -39,17 +39,17 @@
      
      <div>
          <strong>Description:</strong>
-         <textarea style="height:150px" name="description" placeholder="description">{{ $restaurant->description }}</textarea>
+         <textarea style="height:150px" name="description" placeholder="Description">{{ $restaurant->description }}</textarea>
      </div>
      
      <div>
-         <strong>address:</strong>
+         <strong>Address:</strong>
          <input type="text" name="address" value="{{ $restaurant->address }}" placeholder="Address">
      </div>
 
      <div>
          <strong>Phone:</strong>
-         <input type="number" name="phone"  value="{{ $restaurant->phone }}">
+         <input type="tel" name="phone"  value="{{ $restaurant->phone }}">
      </div>
 
      <div>
