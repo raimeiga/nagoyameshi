@@ -13,7 +13,9 @@
  
  <div>
      <strong>Category:</strong>
-     {{$restaurant->Category}}
+     @foreach ($restaurant->categories as $category)
+                {{$category->name}}
+     @endforeach 
  </div>
 
  <div>

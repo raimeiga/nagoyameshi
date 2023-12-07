@@ -17,7 +17,7 @@
          <td>{{ $restaurant->price }}</td>
          <td> <!-- ↓ コントローラのindexアクションから渡された$restaurantのidを表示 -->
               @foreach ($restaurant->categories as $category)
-                {{$category->id}}
+                {{$category->name}}
               @endforeach   
               
          </td>
