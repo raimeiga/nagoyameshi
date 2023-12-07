@@ -17,16 +17,9 @@
 
      <div>
          <strong>Category:</strong>
-         <select name="category_id"> 
-         @foreach ($categories as $category)  
-             <!-- このコードは何？samuraimartとは仕様が異なり、naoyameshiではカテゴリと店舗の関係が多対多なので、どう書いたらいいかわからん -->
-             @if ($category->id == $restaurant->category_id)
-                 <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
-             @else
-                 <option value="{{ $category->id }}">{{ $category->name }}</option>
-             @endif
-         @endforeach
-         </select>
+            @foreach ($categories as $category) 
+             <input type="checkbox" name="category_ids[]" value="{{ $category->id }}" >{{ $category->name }}
+            @endforeach
      </div>
 
      <div>
