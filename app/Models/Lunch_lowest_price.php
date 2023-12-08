@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Lunch_lowest_price extends Model
 {
     use HasFactory;
+
+    public function restaurants() {
+        return $this->hasMany(Restaurant::class)->withTimestamps();
+    }
 }

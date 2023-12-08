@@ -27,11 +27,14 @@
                  あとは、コントローラのstoreアクションに$request->input('category_ids')を記述することで、チェックしたカテゴリの
  　              IDの配列が取得できる。 -->
      </div>
-     
-     <div>
-         <strong>Price:</strong>
-         <input type="text" name="price" placeholder="Price">
-     </div>
+     <div>       
+         <strong>Lunch_lowest_price:</strong>
+         <select name="lunch_lowest_price_id">
+              @foreach ($lunch_lowest_prices as $lunch_lowest_price) 
+                 <option value="{{ $lunch_lowest_price->id }}">{{ $lunch_lowest_price->price }}</option>
+              @endforeach
+         </select>      
+     </div> 
      
      <div>
          <strong>Hours:</strong>
@@ -40,7 +43,14 @@
 
      <div>
          <strong>Holiday:</strong>
-         <input type="text" name="holiday" placeholder="Holiday">
+         <input type="checkbox" name="holiday" value="無休" >無休
+         <input type="checkbox" name="holiday" value="日曜日" >日曜日
+         <input type="checkbox" name="holiday" value="月曜日" >月曜日
+         <input type="checkbox" name="holiday" value="火曜日" >火曜日
+         <input type="checkbox" name="holiday" value="水曜日" >水曜日
+         <input type="checkbox" name="holiday" value="木曜日" >木曜日
+         <input type="checkbox" name="holiday" value="金曜日" >金曜日
+         <input type="checkbox" name="holiday" value="土曜日" >土曜日         
      </div>
 
      <div>

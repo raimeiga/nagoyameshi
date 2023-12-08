@@ -5,22 +5,31 @@
  <table>
      <tr>
          <th>Name</th>
-         <th>Description</th>
-         <th>Price</th>
          <th>Category Name</th>
+         <th>photo</th>
+         <th>★の数</th>
+         <th>Price</th>
+         <th>Hours</th>      
          <th>Action</th>
      </tr>
      @foreach ($restaurants as $restaurant)
      <tr>
          <td>{{ $restaurant->name }}</td>
-         <td>{{ $restaurant->description }}</td>
-         <td>{{ $restaurant->price }}</td>
+
          <td> <!-- ↓ コントローラのindexアクションから渡された$restaurantのidを表示 -->
               @foreach ($restaurant->categories as $category)
                 {{$category->name}}
-              @endforeach   
-              
+              @endforeach                 
          </td>
+         <td>photo</td>
+         <td>★の数</td>
+         
+         <td>
+         @foreach ($lunch_lowest_prices as $lunch_lowest_price) 
+                 {{ $lunch_lowest_price->price }}
+         @endforeach
+         </td>
+         <td>{{ $restaurant->hours }}</td>
          <td>
              <form action="{{ route('restaurants.destroy',$restaurant->id) }}" method="POST">
                  <a href="{{ route('restaurants.show',$restaurant->id) }}">Show</a>

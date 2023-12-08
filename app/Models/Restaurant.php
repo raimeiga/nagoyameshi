@@ -12,4 +12,8 @@ class Restaurant extends Model
     public function categories() {
         return $this->belongsToMany(category::class)->withTimestamps();
     }   
+
+    public function lunch_lowest_price() {
+        return $this->belongsTo(Lunch_lowest_price::class)->withTimestamps();
+    }
 }

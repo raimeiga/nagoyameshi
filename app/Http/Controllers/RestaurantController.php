@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
 use App\Models\Category;  
+use App\Models\Lunch_lowest_price;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -17,7 +19,8 @@ class RestaurantController extends Controller
     public function index()
     {    //途中で、$restaurants = Restaurant::with('categories')->get();に書き換えたけど、換えた理由がわからない。一応残しとく。
          $restaurants = Restaurant::all();
-         return view('restaurants.index', compact('restaurants'));
+         $lunch_lowest_prices = Lunch_lowest_price::all(); 
+         return view('restaurants.index', compact('restaurants','lunch_lowest_prices'));
     }
 
     /**
@@ -28,22 +31,24 @@ class RestaurantController extends Controller
     public function create()
     {   //コードのトップの方でCategoryモデルのuse宣言してるので、Categoriesテーブルから、すべてのデータをインスタンスのコレクションとして取得
         $categories = Category::all(); 
-         return view('restaurants.create', compact('categories')); //1行前の$categoriesをcreate.blade.phpに渡す
+        $lunch_lowest_prices = lunch_lowest_price::all(); 
+        return view('restaurants.create', compact('categories','lunch_lowest_prices')); //1行前の$categoriesをcreate.blade.phpに渡す
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *  
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, category $category)
+    public function store(Request $request, category $category,lunch_lowest_price $lunch_lowest_price)
     {
          $restaurant = new Restaurant();
          $restaurant->name = $request->input('name');
+        //  $restaurant->price = $request->input('price');
+         $restaurant->lunch_lowest_price_id = $request->input('lunch_lowest_price_id');
 
-         $restaurant->price = $request->input('price');
-         $restaurant->hours = $request->input('hours');
+         //$restaurant->hours = $request->input('hours');
          $restaurant->holiday = $request->input('holiday');
          $restaurant->description = $request->input('description');
          $restaurant->address = $request->input('address');
@@ -93,9 +98,11 @@ class RestaurantController extends Controller
     {
          $restaurant->name = $request->input('name');
          
-         $restaurant->price = $request->input('price');
-         $restaurant->hours = $request->input('hours');
+        //  $restaurant->price = $request->input('price');
+         $restaurant->lunch_lowest_price_id = $request->input('lunch_lowest_price_id');
+         //$restaurant->hours = $request->input('hours');
          $restaurant->holiday = $request->input('holiday');
+         
          $restaurant->description = $request->input('description');
          $restaurant->address = $request->input('address');
          $restaurant->phone = $request->input('phone');

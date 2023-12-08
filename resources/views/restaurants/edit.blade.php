@@ -24,7 +24,7 @@
 
      <div>
          <strong>Price:</strong>
-         <input type="text" name="price"  value="{{ $restaurant->price }}">
+         <input type="text" name="price"  value="{{ $restaurant->lunch_lowest_price->price }}">
      </div>
                   
      <div>
@@ -34,7 +34,15 @@
      
      <div>
          <strong>Holiday:</strong>
-         <input type="text" name="holiday" value="{{ $restaurant->holiday }}" placeholder="Holiday">
+         <strong>Holiday:</strong>
+         <input type="checkbox" name="holiday" value="無休" >無休
+         <input type="checkbox" name="holiday" value="日曜日" >日曜日
+         <input type="checkbox" name="holiday" value="月曜日" >月曜日
+         <input type="checkbox" name="holiday" value="火曜日" >火曜日
+         <input type="checkbox" name="holiday" value="水曜日" >水曜日
+         <input type="checkbox" name="holiday" value="木曜日" >木曜日
+         <input type="checkbox" name="holiday" value="金曜日" >金曜日
+         <input type="checkbox" name="holiday" value="土曜日" >土曜日   
      </div>
      
      <div>
