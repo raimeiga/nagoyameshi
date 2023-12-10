@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('Lunch_lowest_prices', function (Blueprint $table) {
-            $table->dropColumn('restaurant_id');
+            //$table->dropColumn('restaurant_id');
         });
     } 
 
