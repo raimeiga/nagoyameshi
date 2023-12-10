@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('restaurants', function (Blueprint $table) {
-            $table->dropColumn('lunch_lowest_price_id');
+            //$table->dropColumn('lunch_lowest_price_id');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('restaurants', function (Blueprint $table) {
-            $table->integer('lunch_lowest_price_id')->unsigned();
+            //$table->integer('lunch_lowest_price_id')->unsigned();
         });
     }
 };
