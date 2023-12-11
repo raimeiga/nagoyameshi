@@ -79,7 +79,7 @@ class RestaurantController extends Controller
     public function edit(Restaurant $restaurant, category $category)
     {
         $categories = Category::all();
-  
+        $restaurant = Restaurant::all();
          return view('restaurants.edit', compact('restaurant', 'categories'));
     }
 
@@ -91,7 +91,8 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Restaurant $restaurant)
-    {
+    {    
+         
          $restaurant->name = $request->input('name');
          $restaurant->price = $request->input('price');
          $restaurant->hours = $request->input('hours');
