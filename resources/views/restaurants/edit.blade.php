@@ -33,17 +33,18 @@
          @endforeach
      </div>
 
+     <!-- 
      <div>
          <strong>Holiday:</strong> 
-         @foreach ($categories as $category)        
-            @if($restaurant->where("holiday",$restaurant->holiday))->exists()
-                <input type="checkbox" name="holiday" value="{{ $restaurant->holiday }}"checked>{{ $restaurant->holiday }}
+         @foreach ($restaurants as $restaurant->holiday)        
+            @if($restaurant->where("holiday",$restaurant->holiday)->exists())
+                <input type="checkbox" name="holiday" value="{{ $restaurant->id }}"checked>{{ $restaurant->holiday }}
              @else
-                <input type="checkbox" name="holiday" value="{{ $restaurant->holiday }}" >{{ $restaurant->holiday }}
+                <input type="checkbox" name="holiday" value="{{ $restaurant->id }}" >{{ $restaurant->holiday }}
             @endif
          @endforeach
-     </div>
-
+     </div> 
+     -->
 
      <div>
          <strong>Price:</strong>
@@ -54,11 +55,11 @@
          <strong>Hours:</strong>
          <input type="text" name="hours"  value="{{ $restaurant->hours }}">
      </div>
-<!--      
+      
       <div>
          <strong>Holiday:</strong>
          <input type="text" name="holiday" value="{{ $restaurant->holiday }}">
-     </div> -->
+     </div>
 
 
      <div>
