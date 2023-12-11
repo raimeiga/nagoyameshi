@@ -35,13 +35,13 @@
 
      <!-- <div>
          <strong>Holiday:</strong> 
-         @foreach ($restaurants as $restaurant->holiday)        
-            @if($restaurant->where("holiday",$restaurant->holiday)->exists())
+         foreach ($restaurants as $restaurant->holiday)        
+            if($restaurant->where("holiday",$restaurant->holiday)->exists())
                 <input type="checkbox" name="holiday" value="{{ $restaurant->id }}"checked>{{ $restaurant->holiday }}
-             @else
+             else
                 <input type="checkbox" name="holiday" value="{{ $restaurant->id }}" >{{ $restaurant->holiday }}
-            @endif
-         @endforeach
+            endif
+         endforeach
      </div> 
       -->
 
