@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('restaurants', function (Blueprint $table) {
-            //$table->integer('price')->unsigned(); 
-        });
+            $table->integer('price')->unsigned(); 
+        }); 
     }
 
     /**
