@@ -79,7 +79,7 @@ class RestaurantController extends Controller
     public function edit(Restaurant $restaurant, category $category)
     {
         $categories = Category::all();
-        $restaurant = Restaurant::all();
+        
          return view('restaurants.edit', compact('restaurant', 'categories'));
     }
 
