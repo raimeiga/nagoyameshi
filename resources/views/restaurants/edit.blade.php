@@ -36,7 +36,7 @@
      <div>
          <strong>Holiday:</strong> 
          @foreach ($categories as $category)        
-            @if(holiday,$restaurant->holiday)->exists()
+            @if($restaurant->where("holiday",$restaurant->holiday))->exists()
                 <input type="checkbox" name="holiday" value="{{ $restaurant->holiday }}"checked>{{ $restaurant->holiday }}
              @else
                 <input type="checkbox" name="holiday" value="{{ $restaurant->holiday }}" >{{ $restaurant->holiday }}
