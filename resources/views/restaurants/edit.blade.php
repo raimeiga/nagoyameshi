@@ -55,10 +55,10 @@
          <input type="text" name="hours"  value="{{ $restaurant->hours }}">
      </div>
       
-      <!-- <div>
+      <div>
          <strong>Holiday:</strong>
          <input type="text" name="holiday" value="{{ $restaurant->holiday }}">
-     </div> -->
+     </div>
 
 
      <div>
