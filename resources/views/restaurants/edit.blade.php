@@ -16,35 +16,51 @@
      </div>
 
      <div>
-         <strong>Category:</strong>
+         <!-- <strong>Category:</strong>
             @foreach ($categories as $category) 
              <input type="checkbox" name="category_ids[]" value="{{ $category->id }}" >{{ $category->name }}
             @endforeach
+         </div> -->
+
+     <div>
+     <strong>Category:</strong>
+        @foreach ($categories as $category) 
+            @if($restaurant->categories()->where("category_id", $category->id)->exists())
+                <input type="checkbox" name="category_ids[]" value="{{ $category->id }}" checked>{{ $category->name }}
+            @else
+                <input type="checkbox" name="category_ids[]" value="{{ $category->id }}" >{{ $category->name }}
+            @endif
+         @endforeach
      </div>
 
      <div>
+         <strong>Holiday:</strong> 
+         @foreach ($categories as $category)        
+            @if(holiday,$restaurant->holiday)->exists()
+                <input type="checkbox" name="holiday" value="{{ $restaurant->holiday }}"checked>{{ $restaurant->holiday }}
+             @else
+                <input type="checkbox" name="holiday" value="{{ $restaurant->holiday }}" >{{ $restaurant->holiday }}
+            @endif
+         @endforeach
+     </div>
+
+
+     <div>
          <strong>Price:</strong>
-         <input type="text" name="price"  value="{{ $restaurant->lunch_lowest_price->price }}">
+         <input type="text" name="price"  value="{{ $restaurant->price }}">
      </div>
                   
      <div>
          <strong>Hours:</strong>
          <input type="text" name="hours"  value="{{ $restaurant->hours }}">
      </div>
-     
-     <div>
+<!--      
+      <div>
          <strong>Holiday:</strong>
-         <strong>Holiday:</strong>
-         <input type="checkbox" name="holiday" value="無休" >無休
-         <input type="checkbox" name="holiday" value="日曜日" >日曜日
-         <input type="checkbox" name="holiday" value="月曜日" >月曜日
-         <input type="checkbox" name="holiday" value="火曜日" >火曜日
-         <input type="checkbox" name="holiday" value="水曜日" >水曜日
-         <input type="checkbox" name="holiday" value="木曜日" >木曜日
-         <input type="checkbox" name="holiday" value="金曜日" >金曜日
-         <input type="checkbox" name="holiday" value="土曜日" >土曜日   
-     </div>
-     
+         <input type="text" name="holiday" value="{{ $restaurant->holiday }}">
+     </div> -->
+
+
      <div>
          <strong>Description:</strong>
          <textarea style="height:150px" name="description" placeholder="Description">{{ $restaurant->description }}</textarea>
