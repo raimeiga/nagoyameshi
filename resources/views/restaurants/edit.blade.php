@@ -33,8 +33,7 @@
          @endforeach
      </div>
 
-     <!-- 
-     <div>
+     <!-- <div>
          <strong>Holiday:</strong> 
          @foreach ($restaurants as $restaurant->holiday)        
             @if($restaurant->where("holiday",$restaurant->holiday)->exists())
@@ -44,7 +43,7 @@
             @endif
          @endforeach
      </div> 
-     -->
+      -->
 
      <div>
          <strong>Price:</strong>
@@ -56,10 +55,10 @@
          <input type="text" name="hours"  value="{{ $restaurant->hours }}">
      </div>
       
-      <div>
+      <!-- <div>
          <strong>Holiday:</strong>
          <input type="text" name="holiday" value="{{ $restaurant->holiday }}">
-     </div>
+     </div> -->
 
 
      <div>
