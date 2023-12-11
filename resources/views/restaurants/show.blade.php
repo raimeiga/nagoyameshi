@@ -20,7 +20,7 @@
 
  <div>
      <strong>Price:</strong>
-     {{$restaurant->lunch_lowest_price_id}} 
+     {{$restaurant->price}} 
  </div>
 
  <div>

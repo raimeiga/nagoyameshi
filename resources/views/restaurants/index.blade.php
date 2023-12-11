@@ -25,9 +25,7 @@
          <td>★の数</td>
          
          <td>
-         @foreach ($lunch_lowest_prices as $lunch_lowest_price) 
-                 {{ $lunch_lowest_price->price }}
-         @endforeach
+         <td>{{ $restaurant->price }}</td>
          </td>
          <td>{{ $restaurant->hours }}</td>
          <td>

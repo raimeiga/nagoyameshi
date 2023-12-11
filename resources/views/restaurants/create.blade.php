@@ -28,12 +28,8 @@
  　              IDの配列が取得できる。 -->
      </div>
      <div>       
-         <strong>Lunch_lowest_price:</strong>
-         <select name="lunch_lowest_price_id">
-              @foreach ($lunch_lowest_prices as $lunch_lowest_price) 
-                 <option value="{{ $lunch_lowest_price->id }}">{{ $lunch_lowest_price->price }}</option>
-              @endforeach
-         </select>      
+         <strong>price:</strong>
+         <input type="text" name="price" placeholder="price">
      </div> 
      
      <div>
@@ -67,7 +63,6 @@
          <strong>Phone:</strong>
          <input type="tel" name="phone" placeholder="Phone">
      </div>
-     
      <div>
          <button type="submit">Submit</button>
      </div>
