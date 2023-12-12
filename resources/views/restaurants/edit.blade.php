@@ -9,29 +9,51 @@
          @csrf
          @method('PUT')
          <div class="form-group">
-             <label for="restaurant-name">商品名</label>
+             <label for="restaurant-name">店名</label>
              <input type="text" name="name" id="restaurant-name" class="form-control" value="{{ $restaurant->name }}">
          </div>
-         <div class="form-group">
-             <label for="restaurant-description">商品説明</label>
-             <textarea name="description" id="restaurant-description" class="form-control">{{ $restaurant->description }}</textarea>
-         </div>
-         <div class="form-group">
-             <label for="restaurant-price">価格</label>
-             <input type="number" name="price" id="restaurant-price" class="form-control" value="{{ $restaurant->price }}">
-         </div>
+
          <div class="form-group">
              <label for="restaurant-category">カテゴリ</label>
-             <select name="category_id" class="form-control" id="restaurant-category">
-                 @foreach ($categories as $category)
-                 @if ($category->id == $restaurant->category_id)
-                 <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+             @foreach ($categories as $category) 
+                 @if($restaurant->categories()->where("category_id", $category->id)->exists())
+                    <input type="checkbox" name="category_ids[]" value="{{ $category->id }}" checked>{{ $category->name }}
                  @else
-                 <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <input type="checkbox" name="category_ids[]" value="{{ $category->id }}" >{{ $category->name }}
                  @endif
-                 @endforeach
-             </select>
+            @endforeach             
+         </div>         
+
+         <div class="form-group">
+             <label for="restaurant-holiday">定休日</label>
+             <input type="text" name="holiday" id="restaurant-holiday" class="form-control" value="{{ $restaurant->holiday }}">
          </div>
+
+         <div class="form-group">
+             <label for="restaurant-price">予算</label>
+             <input type="number" name="price" id="restaurant-price" class="form-control" value="{{ $restaurant->price }}">
+         </div>
+
+         <div class="form-group">
+             <label for="restaurant-hours">営業時間</label>
+             <input type="text" name="hours" id="restaurant-hours" class="form-control" value="{{ $restaurant->hours }}">
+         </div>         
+
+         <div class="form-group">
+             <label for="restaurant-description">説明</label>
+             <textarea name="description" id="restaurant-description" class="form-control">{{ $restaurant->description }}</textarea>
+         </div>
+         
+         <div class="form-group">
+             <label for="restaurant-address">住所</label>
+             <input type="text" name="address" id="restaurant-address" class="form-control" value="{{ $restaurant->address }}">
+         </div>
+         
+         <div class="form-group">
+             <label for="restaurant-phone">住所</label>
+             <input type="tel" name="phone" id="restaurant-phone" class="form-control" value="{{ $restaurant->phone }}">
+         </div>
+
          <button type="submit" class="btn btn-danger">更新</button>
      </form>
  
