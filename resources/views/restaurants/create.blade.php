@@ -7,7 +7,7 @@
      <form action="{{ route('restaurants.store') }}" method="POST">
          @csrf
          <div class="form-group">
-             <label for="product-name">店名</label>
+             <label for="restaurant-name">店名</label>
              <input type="text" name="name" id="restaurant-name" class="form-control">
          </div>       
 
