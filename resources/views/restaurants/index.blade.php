@@ -2,9 +2,7 @@
 @extends('layouts.app')
  
  @section('content')
- <a href="{{ route('restaurants.create') }}"> Create New Restaurant</a>
-
- <div class="row">
+  <div class="row">
      <div class="col-9">
          <div class="container mt-4">
              <div class="row w-100">
