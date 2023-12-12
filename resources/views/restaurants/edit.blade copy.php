@@ -16,12 +16,7 @@
      </div>
 
      <div>
-         <!-- <strong>Category:</strong>
-            @foreach ($categories as $category) 
-             <input type="checkbox" name="category_ids[]" value="{{ $category->id }}" >{{ $category->name }}
-            @endforeach
-         </div> -->
-
+     
      <div>
      <strong>Category:</strong>
         @foreach ($categories as $category) 
