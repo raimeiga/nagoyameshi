@@ -34,16 +34,20 @@
      </div>
 
      <!-- <div>
-         <strong>Holiday:</strong> 
-         foreach ($restaurants as $restaurant->holiday)        
-            if($restaurant->where("holiday",$restaurant->holiday)->exists())
-                <input type="checkbox" name="holiday" value="{{ $restaurant->id }}"checked>{{ $restaurant->holiday }}
-             else
-                <input type="checkbox" name="holiday" value="{{ $restaurant->id }}" >{{ $restaurant->holiday }}
-            endif
-         endforeach
-     </div> 
-      -->
+         <strong>Holiday:</strong>                
+           atマークif($restaurant->where("holiday",$restaurant->holiday)->exists())
+                <input type="checkbox" name="holiday" value="{{$restaurant->holiday}}"checked>月曜日
+                atマークelse
+                <input type="checkbox" name="holiday" value="{{$restaurant->holiday}}" >月曜日
+                atマークendif
+
+                atマークif($restaurant->where("holiday",$restaurant->holiday)->exists())
+                <input type="checkbox" name="holiday" value="{{$restaurant->holiday}}"checked>火曜日
+                atマークelse
+                <input type="checkbox" name="holiday" value="{{$restaurant->holiday}}" >火曜日
+                atマークendif       
+     </div>  -->
+     
 
      <div>
          <strong>Price:</strong>
