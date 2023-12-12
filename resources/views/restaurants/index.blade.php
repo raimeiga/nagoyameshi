@@ -1,42 +1,33 @@
 <!-- 店舗一覧のページ -->
-
-<a href="{{ route('restaurants.create') }}"> Create New Restaurant</a>
+@extends('layouts.app')
  
- <table>
-     <tr>
-         <th>Name</th>
-         <th>Category Name</th>
-         <th>photo</th>
-         <th>★の数</th>
-         <th>Price</th>
-         <th>Hours</th>      
-         <th>Action</th>
-     </tr>
-     @foreach ($restaurants as $restaurant)
-     <tr>
-         <td>{{ $restaurant->name }}</td>
+ @section('content')
+ <a href="{{ route('restaurants.create') }}"> Create New Restaurant</a>
 
-         <td> <!-- ↓ コントローラのindexアクションから渡された$restaurantのidを表示 -->
-              @foreach ($restaurant->categories as $category)
-                {{$category->name}}
-              @endforeach                 
-         </td>
-         <td>photo</td>
-         <td>★の数</td>
-         
-         <td>
-         <td>{{ $restaurant->price }}</td>
-         </td>
-         <td>{{ $restaurant->hours }}</td>
-         <td>
-             <form action="{{ route('restaurants.destroy',$restaurant->id) }}" method="POST">
-                 <a href="{{ route('restaurants.show',$restaurant->id) }}">Show</a>
-                 <a href="{{ route('restaurants.edit',$restaurant->id) }}">Edit</a>
-                 @csrf
-                 @method('DELETE')
-                 <button type="submit">Delete</button>
-             </form>
-         </td>
-     </tr>
-     @endforeach
- </table>
+ <div class="row">
+     <div class="col-9">
+         <div class="container mt-4">
+             <div class="row w-100">
+                 @foreach($restaurants as $restaurant)
+                 <div class="col-3">
+                     <a href="{{route('restaurants.show', $restaurant)}}">
+                         <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
+                     </a>
+                     <div class="row">
+                         <div class="col-12">
+                             <p class="samuraimart-product-label mt-2">
+                                 {{$restaurant->name}}<br>
+                                 @foreach ($restaurant->categories as $category)
+                                    {{$category->name}}<br>
+                                 @endforeach
+                                 <label>￥{{$restaurant->price}}</label>
+                             </p>
+                         </div>
+                     </div>
+                 </div>
+                 @endforeach
+             </div>
+         </div>
+     </div>
+ </div>
+ @endsection
