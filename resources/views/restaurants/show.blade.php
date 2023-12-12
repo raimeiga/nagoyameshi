@@ -12,8 +12,15 @@
                  <h1 class="">
                      {{$restaurant->name}}
                  </h1>
-                 <hr><br>
-                 <p class="d-flex align-items-end">     
+                 <hr>
+                 <p class="d-flex align-items-end">  
+                 <div class="form-group">
+                    <label for="restaurant-category">カテゴリ : </label>
+                     <!--↓ $categoriesは、RestaurantControllerのcreateアクションから渡されたCategoryモデルのインスタンス（categoriesテーブルの全カラム） -->
+                     @foreach ($restaurant->categories as $category)
+                                    {{$category->name}}<br>
+                     @endforeach
+                       
                      予算 : ￥{{$restaurant->price}}(税込)<br>                     
                      営業時間 : {{$restaurant->hours}}<br>
                      定休日 : {{$restaurant->holiday}}<br>
@@ -21,6 +28,7 @@
                      住所 : {{$restaurant->address}}<br>
                      電話番号 : {{$restaurant->phone}}<br>
                  </p>   
+                 <hr>
              </div>
              @auth
              <form method="POST" class="m-3 align-items-end">
