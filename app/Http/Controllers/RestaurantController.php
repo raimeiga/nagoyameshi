@@ -16,9 +16,8 @@ class RestaurantController extends Controller
      */
     public function index()
     {    //途中で、$restaurants = Restaurant::with('categories')->get();に書き換えたけど、換えた理由がわからない。一応残しとく。
-         $restaurants = Restaurant::all();
-         
-         return view('restaurants.index', compact('restaurants'));
+         $restaurants = Restaurant::all();         
+         return view('restaurants.index', compact('restaurants'));         
     }
 
     /**
@@ -39,7 +38,7 @@ class RestaurantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, category $category)
+    public function store(Request $request, category $category) 
     {
          $restaurant = new Restaurant();
          $restaurant->name = $request->input('name');
@@ -56,7 +55,8 @@ class RestaurantController extends Controller
                 sync()メソッドの引数に$request->input('category_ids')を渡すことで、その店（restaurant）と
                 チェックされたカテゴリ（category）を紐付けて中間テーブルに保存できる                
                 「category_ids」（複数形）で記述しないと、中間テーブルにも保存されず、indexにも反映されない */
-         return to_route('restaurants.index');
+         return to_route('restaurants.index');  //←to_route()の第２引数にcompact('restaurant')入れたほうがいいのか？
+         
     }
 
     /**
@@ -79,7 +79,7 @@ class RestaurantController extends Controller
     public function edit(Restaurant $restaurant, category $category)
     {
         $categories = Category::all();
-        
+        $restaurants = Restaurant::all(); 
          return view('restaurants.edit', compact('restaurant', 'categories'));
     }
 
