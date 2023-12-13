@@ -3,7 +3,9 @@
      <a class="navbar-brand" href="{{ url('/') }}">
        {{ config('app.name', 'Laravel') }}
      </a>
-     <form class="row g-1">
+     
+     <!-- samuraimartでは検索窓と検索ボタンがあったけど、nagoyamehiではコメントにして無効化しておこう　-->
+     <!-- <form class="row g-1">
        <div class="col-auto">
          <input class="form-control samuraimart-header-search-input">
        </div>
@@ -13,7 +15,7 @@
      </form>
      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
        <span class="navbar-toggler-icon"></span>
-     </button>
+     </button> -->
  
      <div class="collapse navbar-collapse" id="navbarSupportedContent">
        <!-- Right Side Of Navbar -->
