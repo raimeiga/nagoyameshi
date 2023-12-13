@@ -23,7 +23,8 @@ class RestaurantController extends Controller
     {    
         // paginate(15)とすることで、Productモデルのデータを15件ずつ、ページネーションで表示
         $restaurants = Restaurant::paginate(15);     
-         return view('restaurants.index', compact('restaurants'));         
+        $categories = Category::all();
+        return view('restaurants.index', compact('restaurants','categories'));         
     }
 
     /**
