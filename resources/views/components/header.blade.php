@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light shadow-sm samuraimart-header-container">
    <div class="container">
      <a class="navbar-brand" href="{{ url('/') }}">
-       {{ config('app.name', 'Laravel') }}
+       {{ config('app.name', 'Laravel') }}   <!-- ←ロゴでなく、「NAGOYAMESHI」が表示されるようにした -->
      </a>
      
      <!-- samuraimartでは検索窓と検索ボタンがあったけど、nagoyamehiではコメントにして無効化しておこう　-->
