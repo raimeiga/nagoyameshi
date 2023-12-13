@@ -69,7 +69,7 @@
          <div class="offset-1 col-10">
              <!-- レビューを実装する箇所になります -->
              <div class="row">
-                 @foreach($reviews as $review)
+                 @foreach($reviews as $review)  <!-- $reviewは、RestrantControllerから渡されたもの -->
                  <div class="offset-md-5 col-md-5">
                      <p class="h3">{{$review->content}}</p>
                      <label>{{$review->created_at}} {{$review->user->name}}</label>
