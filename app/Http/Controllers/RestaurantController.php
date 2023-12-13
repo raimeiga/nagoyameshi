@@ -67,8 +67,9 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {   
-        $reviews = $restaurant->reviews()->get();
-        return view('restaurants.show', compact('restaurant','reviews'));
+        // ↓ restauransとreviewsテーブルは別なので、「->」でつないで、get();で全てのデータを取得
+        $reviews = $restaurant->reviews()->get();  
+        return view('restaurants.show', compact('restaurant','reviews')); // 1行前の$reviewsをshow.blade.phpに渡している
     }
 
     /**
