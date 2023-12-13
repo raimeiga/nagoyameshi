@@ -6,6 +6,11 @@ use App\Models\Restaurant;
 use App\Models\Category;  
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+/* ↑ Authファサードを利用することで、「現在ログイン中のユーザー」を取得
+     Authファサードは、クラスをインスタンス化しなくても、Auth::user()を記述することで、
+     現在ログイン中のユーザー（Userモデルのインスタンス）を取得できる
+*/
 
 class RestaurantController extends Controller
 {
@@ -123,4 +128,16 @@ class RestaurantController extends Controller
   
          return to_route('restaurants.index');
     }
+
+    // 商品のお気に入り登録・解除を制御するアクション
+    public function favorite(Restaurant $restaurant)
+     {
+        //togglefavorite は、ユーザーがその店舗をお気に入り登録していなければ登録し、お気に入り登録していれば解除
+         Auth::user()->togglefavorite($restaurant);  
+         /* Auth::userは、現在ログイン中のユーザーのすべてを取得する。↑（上の方）にAuthファサードの使用宣言をしているため。
+         　　ログアウト状態では、user（現在ログイン中のユーザー）が取得できずにnullとなり、エラーがでるので、
+         　　ルーティングファイルに ->middleware('auth');を追記してエラーを防ぐ
+         */ 
+         return back(); //元のページに戻る
+     }
 }
