@@ -26,6 +26,8 @@
                  @endforeach
              </div>
          </div>
+         <!-- 「次のページへ」というページネーションの表示 -->
+         {{ $restaurants->links() }}
      </div>
  </div>
  @endsection

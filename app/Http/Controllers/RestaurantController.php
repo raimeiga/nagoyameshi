@@ -20,8 +20,9 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {    //途中で、$restaurants = Restaurant::with('categories')->get();に書き換えたけど、換えた理由がわからない。一応残しとく。
-         $restaurants = Restaurant::all();         
+    {    
+        // paginate(15)とすることで、Productモデルのデータを15件ずつ、ページネーションで表示
+        $restaurants = Restaurant::paginate(15);     
          return view('restaurants.index', compact('restaurants'));         
     }
 
