@@ -19,12 +19,28 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, category $category)
     {    
         // paginate(15)とすることで、Productモデルのデータを15件ずつ、ページネーションで表示
-        $restaurants = Restaurant::paginate(15);     
+        if ($request->category !== null) {
+            $restaurants = Restaurant::whereHas('categories', function ($query) use ($request) {
+                $query->where('category_id', $request->category);
+            })->paginate(15);
+        
+            $total_count = Restaurant::whereHas('categories', function ($query) use ($request) {
+                $query->where('category_id', $request->category);
+            })->count();
+        
+            $category = Category::find($request->category);
+        } else {
+            $restaurants = Restaurant::paginate(15);
+            $total_count = "";
+            $category = null;
+        }
+        
         $categories = Category::all();
-        return view('restaurants.index', compact('restaurants','categories'));         
+       
+        return view('restaurants.index', compact('restaurants', 'category', 'categories', 'total_count'));
     }
 
     /**
