@@ -13,4 +13,9 @@ class Restaurant extends Model
         return $this->belongsToMany(category::class)->withTimestamps();
     }   
 
+    public function reviews()
+     {
+         return $this->hasMany(Review::class);
+     }
+
 }
