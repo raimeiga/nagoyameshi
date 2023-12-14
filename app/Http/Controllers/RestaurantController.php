@@ -25,7 +25,7 @@ class RestaurantController extends Controller
         if ($request->category !== null) {
             $restaurants = Restaurant::whereHas('categories', function ($query) use ($request) {
                 $query->where('category_id', $request->category);
-            })->paginate(15);
+            })->sortable()->paginate(15);
         
             $total_count = Restaurant::whereHas('categories', function ($query) use ($request) {
                 $query->where('category_id', $request->category);
@@ -33,7 +33,7 @@ class RestaurantController extends Controller
         
             $category = Category::find($request->category);
         } else {
-            $restaurants = Restaurant::paginate(15);
+            $restaurants = Restaurant::sortable()->paginate(15);
             $total_count = "";
             $category = null;
         }
