@@ -59,4 +59,31 @@ class UserController extends Controller
          return to_route('mypage'); //更新後はマイページに遷移
     }
 
+    // パスワードを変更するためのアクション
+    public function update_password(Request $request)
+    {
+        $validatedData = $request->validate([
+            'password' => 'required|confirmed',
+        ]);
+
+        $user = Auth::user();
+        /* 送信されたリクエスト内のpasswordとpassword_confirmationが同一のものか確認し、
+           同じである場合のみパスワードを暗号化しデータベースへと保存*/
+        if ($request->input('password') == $request->input('password_confirmation')) {
+            $user->password = bcrypt($request->input('password'));
+            $user->update();
+        
+        // 異なっていた場合は、パスワード変更画面へとリダイレクト
+        } else { 
+            return to_route('mypage.edit_password');
+        }
+
+        return to_route('mypage');
+    }
+
+    //パスワード変更画面を表示するedit_passwordアクション    
+    public function edit_password()
+    {
+        return view('users.edit_password');
+    }
 }
