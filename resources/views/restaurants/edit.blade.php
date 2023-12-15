@@ -14,7 +14,8 @@
          </div>
 
          <div class="form-group">
-             <label for="restaurant-category">カテゴリ</label>
+         <!-- labelのfor属性とinputのid属性は同じにしないとlabelが機能しないだか何だかってのがあるから、inputタグ内に、値を同じにしたid属性入れたほうがいい -->
+             <label for="restaurant-category">カテゴリ</label> 
              @foreach ($categories as $category) 
                  @if($restaurant->categories()->where("category_id", $category->id)->exists())
                     <input type="checkbox" name="category_ids[]" value="{{ $category->id }}" checked>{{ $category->name }}
