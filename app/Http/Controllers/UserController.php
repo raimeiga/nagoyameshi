@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Restaurant;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -85,5 +86,15 @@ class UserController extends Controller
     public function edit_password()
     {
         return view('users.edit_password');
+    }
+
+
+    public function favorite()
+    {
+        $user = Auth::user();
+
+        $favorites = $user->favorites(Restaurant::class)->get();
+
+        return view('users.favorite', compact('favorites'));
     }
 }
