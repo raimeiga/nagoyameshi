@@ -15,7 +15,17 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    
+     public function index(Request $request)
+     { 
+        $review = new Review();
+        $review->score = $request->input('score');
+        
+        return view('restaurants.index', compact('review'));
+     }
+
+
+     public function store(Request $request)
     {
         $request->validate([
             'content' => 'required'
