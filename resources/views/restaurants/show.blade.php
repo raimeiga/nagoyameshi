@@ -82,7 +82,7 @@
                  @foreach($reviews as $review)  <!-- $reviewは、RestrantControllerから渡されたもの -->
                  <div class="offset-md-5 col-md-5">
                      <p class="h3">{{$review->content}}</p>
-                     <label>{{$review->created_at}} {{$review->user->name}}</label>
+                     <label>{{$review->created_at}} {{$review->user->nickname}}</label>
                  </div>
                  @endforeach
              </div><br />
