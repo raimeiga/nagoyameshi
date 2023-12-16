@@ -8,7 +8,7 @@
          @endcomponent
      </div>
      <div class="col-9">
-        <div class="container">
+        <div class="container">   <!--  画面に反映されてない↓ -->
              @if ($category !== null)
                  <a href="{{ route('restaurants.index') }}">トップ</a> > <a href="#">{{ $category->name }}</a> > {{ $category->name }}
                  <h1>{{ $category->name }}の店舗一覧{{$total_count}}件</h1>
@@ -17,7 +17,7 @@
          <div>
             Sort By           
             @sortablelink('price', '予算')
-            @sortablelink('　', 'お気に入り★数')
+            @sortablelink('score', '★数')
             <!-- ↑↑↑↑↑↑↑　お気に入り数でソートを効かせたいが、まだ★の数で評価する機能がないので、とりあえずカラム名は'　'としておく -->
 
          </div>
@@ -35,7 +35,7 @@
                                  {{$restaurant->name}}<br>
                                  @foreach ($restaurant->categories as $category)
                                     {{$category->name}}<br>
-                                 @endforeach
+                                 @endforeach          
                                  <label>￥{{$restaurant->price}}</label>
                              </p>
                          </div>
