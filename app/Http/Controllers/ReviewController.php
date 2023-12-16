@@ -24,7 +24,6 @@ class ReviewController extends Controller
         return view('restaurants.index', compact('review'));
      }
 
-
      public function store(Request $request)
     {
         $request->validate([
