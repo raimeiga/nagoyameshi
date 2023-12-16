@@ -16,12 +16,13 @@
                          <img src="{{ asset('img/dummy.png')}}" class="img-fluid w-100">
                      </a>
                      <div class="container mt-3">
-                         <h5 class="w-100 samuraimart-favorite-item-text">店舗名：{{App\Models\Restaurant::find($fav->favoriteable_id)->name}}</h5>                    
-                         <!-- ↓　ココにお気に入り登録された店舗のカテゴリを並べたいけど、書き方がわからない。↓で書くと何も表示されない。 -->
-                         <h5 class="w-100 samuraimart-favorite-item-text">カテゴリ：{{App\Models\Restaurant::find($fav->favoriteable_id)->category_id}}</h5> 
-                         <!-- ↓も、お気に入り登録された店舗のカテゴリが表示されているのでなく、ただ、カテゴリ名が繰り返されているだけ。 -->
-                         <!-- <h5 class="w-100 samuraimart-favorite-item-text">カテゴリ：{{App\Models\Category::find($fav->favoriteable_id)->name}}</h5> -->
-
+                         <h5 class="w-100 samuraimart-favorite-item-text">店舗名：{{App\Models\Restaurant::find($fav->favoriteable_id)->name}}</h5>                   
+                         <h6 class="w-100 samuraimart-favorite-item-text">カテゴリ：
+                            <!-- ↓ Restaurantモデル（restaurantテーブル）と紐づくCategoryモデル（categoriesテーブル）から$category->nameを引っ張ってきた書き方 -->
+                            @foreach (App\Models\Restaurant::find($fav->favoriteable_id)->categories as $category)
+                                {{ $category->name }}
+                            @endforeach
+                         </h6>                
                          <h6 class="w-100 samuraimart-favorite-item-text">予算：&yen;{{App\Models\Restaurant::find($fav->favoriteable_id)->price}}</h6>
                          <h6 class="w-100 samuraimart-favorite-item-text">営業時間：{{App\Models\Restaurant::find($fav->favoriteable_id)->hours}}</h6>
                      </div>
