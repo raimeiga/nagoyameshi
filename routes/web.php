@@ -31,7 +31,9 @@ Route::controller(UserController::class)->group(function () {
     Route::get('users/mypage/favorite', 'favorite')->name('mypage.favorite');
 });
 
+
 Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
+Route::get('reviews', [ReviewController::class, 'index'])->name('reviews.index');
 
 Route::get('restaurants/{restaurant}/favorite', [RestaurantController::class, 'favorite'])->name('restaurants.favorite');
 
