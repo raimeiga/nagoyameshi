@@ -8,7 +8,7 @@
          @endcomponent
      </div>
      <div class="col-9">
-        <div class="container">   <!--  画面に反映されてない↓ -->
+        <div class="container">   
              @if ($category !== null)
                  <a href="{{ route('restaurants.index') }}">トップ</a> > <a href="#">{{ $category->name }}</a> > {{ $category->name }}
                  <h1>{{ $category->name }}の店舗一覧{{$total_count}}件</h1>
