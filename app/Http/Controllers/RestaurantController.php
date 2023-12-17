@@ -21,7 +21,7 @@ class RestaurantController extends Controller
      */
     public function index(Request $request, category $category)
     {    
-        // paginate(15)とすることで、Productモデルのデータを15件ずつ、ページネーションで表示
+        // paginate(15)とすることで、Restaurantモデルのデータを15件ずつ、ページネーションで表示
         if ($request->category !== null) {
             $restaurants = Restaurant::whereHas('categories', function ($query) use ($request) {
                 $query->where('category_id', $request->category);
