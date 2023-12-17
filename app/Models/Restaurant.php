@@ -10,11 +10,11 @@ use Overtrue\LaravelFavorite\Traits\Favoriteable;
 use Kyslik\ColumnSortable\Sortable;
 
 class Restaurant extends Model
-{
+{                 // ↓ Favoriteableを記述することで、お気に入りと店舗が紐づく
     use HasFactory, Favoriteable, Sortable;
 
     public function categories() {
-        return $this->belongsToMany(category::class)->withTimestamps();
+        return $this->belongsToMany(Category::class)->withTimestamps();
     }   
 
     public function reviews()
