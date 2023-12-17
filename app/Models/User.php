@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Notifications\CustomVerifyEmail;
 use App\Notifications\CustomResetPassword;
-// お気に入りする（今回のケースでは商品のUser）モデルにuse Favoriterとすることで、お気に入り機能を使えるようになる
+// 店舗をお気に入りする（今回のケースではUser）モデルにuse Favoriterとすることで、お気に入り機能を使えるようになる
 use Overtrue\LaravelFavorite\Traits\Favoriter;
 class User extends Authenticatable implements MustVerifyEmail
 {
