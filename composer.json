@@ -9,6 +9,7 @@
         "doctrine/dbal": "^3.7",
         "encore/laravel-admin": "^1.8",
         "guzzlehttp/guzzle": "^7.2",
+        "intervention/image": "^3.1",
         "kyslik/column-sortable": "^6.5",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
