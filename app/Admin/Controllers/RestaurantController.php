@@ -40,8 +40,7 @@ class RestaurantController extends AdminController
         $grid->column('created_at', __('Created at'))->sortable();
         $grid->column('updated_at', __('Updated at'))->sortable();
 
-        $grid->filter(function($filter) {
-            
+        $grid->filter(function($filter) {            
             $filter->like('name', '店舗名');
             $filter->between('price', '予算');
             //ここにカテゴリー名が来るようにしたい。↓を何とか編集せよ
