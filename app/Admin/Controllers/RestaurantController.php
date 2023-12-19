@@ -29,7 +29,8 @@ class RestaurantController extends AdminController
 
         $grid->column('id', __('Id'))->sortable();
         $grid->column('name', __('Name'));
-        // ここにカテゴリー名カラムを書きたい      
+        // ここにカテゴリー名カラムを書きたいけど、どうやって書くか不明
+                
         $grid->column('price', __('Price'))->sortable();
         $grid->column('hours', __('Hours'));
         $grid->column('holiday', __('Holiday'));
