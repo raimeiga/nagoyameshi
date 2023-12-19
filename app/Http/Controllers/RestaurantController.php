@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
 use App\Models\Category;  
+use App\Models\Review;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, category $category)
+    public function index(Request $request)
     {    
         // paginate(15)とすることで、Restaurantモデルのデータを15件ずつ、ページネーションで表示
         if ($request->category !== null) {
@@ -33,13 +34,12 @@ class RestaurantController extends Controller
         
             $category = Category::find($request->category);
         } else {
-            $restaurants = Restaurant::sortable()->paginate(15);
+            $restaurants = Restaurant::sortable()->paginate(15);           
             $total_count = "";
             $category = null;
-        }
-        
+        }        
         $categories = Category::all();
-       
+        
         return view('restaurants.index', compact('restaurants', 'category', 'categories', 'total_count'));
     }
 
@@ -61,7 +61,7 @@ class RestaurantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, category $category) 
+    public function store(Request $request) 
     {
          $restaurant = new Restaurant();
          $restaurant->name = $request->input('name');
@@ -78,7 +78,7 @@ class RestaurantController extends Controller
                 sync()メソッドの引数に$request->input('category_ids')を渡すことで、その店（restaurant）と
                 チェックされたカテゴリ（category）を紐付けて中間テーブルに保存できる                
                 「category_ids」（複数形）で記述しないと、中間テーブルにも保存されず、indexにも反映されない */
-         return to_route('restaurants.index');  //←to_route()の第２引数にcompact('restaurant')入れたほうがいいのか？
+         return to_route('restaurants.index');  
          
     }
 
