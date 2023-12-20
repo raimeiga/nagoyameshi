@@ -34,13 +34,14 @@ class RestaurantController extends Controller
         
             $category = Category::find($request->category);
         } else {
-            $restaurants = Restaurant::sortable()->paginate(15);           
+            $restaurants = Restaurant::sortable()->paginate(15);       
+                
             $total_count = "";
             $category = null;
         }        
         $categories = Category::all();
-        
-        return view('restaurants.index', compact('restaurants', 'category', 'categories', 'total_count'));
+        $restaurant = Restaurant::with('reviews')->sortable()->get();        
+        return view('restaurants.index', compact('restaurants','restaurant', 'category', 'categories', 'total_count'));
     }
 
     /**
